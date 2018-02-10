@@ -96,7 +96,7 @@ passport.deserializeUser( (id, done) => {//deserializeUser also takes a callback
 //   res.sendFile(path.join(__dirname, '../build/index.html'));
 // })
 
-
+app.get('/api/getmemes', controller.getMemes)
 
 
 
