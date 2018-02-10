@@ -12,7 +12,7 @@ componentDidMount(){
 
     render(){
         const meme = this.props.memes;
-        if (this.props.memes != null) { 
+        if (meme != null) { 
             var list = meme.map( (memebox, i) => {
             return(
                 <div className="meme-box" key={i}>
@@ -39,7 +39,7 @@ componentDidMount(){
 
 function mapStateToProps(state) {
     return {
-        Memes:state.memes
+        memes:state.memes
     }
 }
 
