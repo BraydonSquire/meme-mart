@@ -5,20 +5,20 @@ import {connect} from 'react-redux';
 import {getUserInfo} from '../ducks/reducer';
 
 class Home extends Component {
-    constructor(){
-        super()
+    // constructor(){
+    //     super()
 
-        this.state = {
-            Memes:[{img:'blah'}]
-        }
-    }
+    //     this.state = {
+    //         Memes:[{img:'blah'}]
+    //     }
+    // }
 
     componentDidMount(){
         this.props.getUserInfo()
     }
 
     render(){
-        const Meme = this.state.Memes
+        // const Meme = this.state.Memes
         return(
             <div>
                 <Nav />

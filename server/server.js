@@ -98,6 +98,8 @@ passport.deserializeUser( (id, done) => {//deserializeUser also takes a callback
 
 app.get('/api/getmemes', controller.getMemes)
 
+app.get('/api/getonememe/:id', controller.getOneMeme)
+
 
 
 const port = 3001;

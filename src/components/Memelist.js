@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getMemeList} from '../ducks/reducer';
+import {Link} from 'react-router-dom'
 
 
 class Memelist extends Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            someState:[]
+        }
+    }
    
 componentDidMount(){
     this.props.getMemeList()
@@ -16,12 +24,14 @@ componentDidMount(){
             var list = meme.map( (memebox, i) => {
             return(
                 <div className="meme-box" key={i}>
-                    <div className="meme-photo">
-                        <img src={memebox.img} />
+                    <Link to={`/meme/${memebox.id}`} style={{ textDecoration: 'none' }}>
+                    <div className="meme-photo-container">
+                        <img className="meme-photo" src={memebox.img} />
                     </div>
                 <div className="meme-title">
                     <p>{memebox.title}</p>
                 </div>    
+                </Link>
                 </div>
             )
         } )
@@ -30,7 +40,7 @@ componentDidMount(){
 
         return(
             <div className="memelist">
-            <p>there should be memes here!! >:(</p>
+            
                 {list}
             </div>
         )

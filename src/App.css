@@ -1,3 +1,8 @@
+body {
+  /* font-family: 'Montserrat', sans-serif; */
+  background-color: #34373c;
+}
+
 .memelist {
   padding-top:70px;
   margin-left:15%;
@@ -8,12 +13,12 @@
 width:100%;
 height: 70px;
 box-sizing: border-box;
-border-bottom: 3px;
-border-color: tomato;
-border-style: solid;
+/* border-color: tomato; */
+/* border-style: solid; */
 display: flex;
-position: fixed;
+position: relative;
 justify-content: space-between;
+background-color: #141518;
 }
 
 .left-box {
@@ -32,7 +37,7 @@ justify-content: space-between;
 }
 
 .login-container {
-  font-family: 'Montserrat', sans-serif;
+  
   position: relative;
   height: 100%;
   width: 33%;
@@ -42,9 +47,8 @@ justify-content: space-between;
   margin-left: 33%;
   height: 100%;
   width:100%;
-  font-family: 'Montserrat', sans-serif;
   font-size:40px;
-  color:tomato;
+  color:whitesmoke;
   padding-top:2%;
 }
 
@@ -55,5 +59,80 @@ justify-content: space-between;
 }
 
 .login-link {
-  color:tomato;
+  color:whitesmoke;
+  text-decoration: none;
+}
+
+.memelist {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top:50px;
+
+}
+
+.meme-box {
+  height:30%;
+  width: 30%;
+  margin: 7px;
+  border-radius: 3px;
+  background-color:#2c2f34;
+  position: relative;
+  /* border-style: solid;
+  border-color: black; */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+} 
+
+.meme-photo-container {
+/* height: 100%;
+width: 100%; */
+position: relative;
+width: 100%;
+}
+.meme-photo-container:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.meme-photo {
+max-height: 100%;
+max-width:100%;
+position: absolute;
+top:0;
+left:0;
+right: 0;
+bottom: 0;
+
+}
+
+.meme-title {
+  text-align: center;
+  color: whitesmoke;
+  /* font-size: 20px; */
+  font-size: 100%;
+}
+
+.meme-center {
+  display: flex;
+  justify-content: center;
+  padding-top:30px;
+}
+
+.single-meme-title {
+  text-align: center;
+  font-size: 30px;
+}
+
+.single-meme-container {
+  padding-bottom: 70px;
+}
+
+.single-meme-photo {
+  max-height: 80vh;
+  max-width: 80vw;
 }
