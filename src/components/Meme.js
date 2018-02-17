@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Nav from './Nav';
 // import axios from 'axios';
-import {connect} from 'react-redux';
-import {getMeme} from '../ducks/reducer';
+import { connect } from 'react-redux';
+import { getMeme, getUserInfo, favoriteMeme } from '../ducks/reducer';
 
 
 class Meme extends Component {
@@ -10,38 +10,38 @@ class Meme extends Component {
         super(props)
 
         this.state = {
-            meme:[]
+            meme: []
         }
-        // this.getDankMeme = this.getDankMeme.bind(this)
+
     }
 
-    componentDidMount(){
-        // this.getDankMeme()
-        // console.log('match params id', this.props.match.params.id)
+    componentDidMount() {
         this.props.getMeme(this.props.match.params.id)
-        
     }
 
-    // getDankMeme(){
-    //     axios.get(`/api/getonememe/${this.props.match.params.id}`)
-    //     .then(res => this.setState({res}) && console.log('Meme', this.state.meme))
-    // }
 
 
-    render(){
+
+    render() {
         const meme = this.props.meme;
+        const favoriteData = {
+            favid:meme.id,
+            favimg:meme.img,
+            favtitle:meme.title,
+            userid:this.props.userInfo.id
+        }
 
-        var list = meme.map( (memebox, i) => {
-            return(
+        var list = meme.map((memebox, i) => {
+            return (
                 // <div className="meme-box" key={i}>
-                   
+
                 //     <div className="meme-photo-container">
                 //         <img className="meme-photo" src={memebox.img} />
                 //     </div>
                 // <div className="meme-title">
                 //     <p>{memebox.title}</p>
                 // </div>    
-                
+
                 // </div>
                 <div className="single-meme-container">
                     <div className="single-meme-title"><p>{memebox.title}</p></div>
@@ -49,12 +49,12 @@ class Meme extends Component {
                 </div>
 
             )
-        } )
+        })
 
-        return(
+        return (
             <div>
-            <Nav />
-            {/* <div className="meme-box" key={meme.id}>
+                <Nav />
+                {/* <div className="meme-box" key={meme.id}>
                     
                     <div className="meme-photo-container">
                         <img className="meme-photo" src={this.props.meme.img} />
@@ -65,18 +65,24 @@ class Meme extends Component {
                 
                 </div> */}
                 <div className="meme-center">
-                {list}
+                    {list}
                 </div>
+                <div className="favorite-container">
+                    {this.props.userInfo.id !== null ? <button onClick={ () => this.props.favoriteMeme(favoriteData)} className="favorite-button">Favorite</button> : null }
+                    
                 </div>
-            
+            </div>
+
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        meme: state.meme
+        meme: state.meme,
+        userInfo: state.userInfo,
+        favoritedMeme: state.favoritedMeme
     }
 }
 
-export default connect(mapStateToProps, {getMeme})(Meme);
+export default connect(mapStateToProps, { getMeme, getUserInfo, favoriteMeme })(Meme);

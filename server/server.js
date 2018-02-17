@@ -100,6 +100,8 @@ app.get('/api/getmemes', controller.getMemes)
 
 app.get('/api/getonememe/:id', controller.getOneMeme)
 
+app.post('/api/favoritememe', controller.favoriteMeme)
+
 
 
 const port = 3001;

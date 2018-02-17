@@ -12,5 +12,12 @@ module.exports = {
         .then(response => {
             res.status(200).send(response)
         })
+    },
+    favoriteMeme: (req, res, next) => {
+        const db = req.app.get('db')
+        db.favorite_meme(req.body.favid, req.body.favimg, req.body.favtitle, req.body.userid)
+        .then(response => {
+            res.status(200).send(response)
+        }).catch( () => res.status(500).send('Something went wrong favoriting this meme!') )
     }
 }

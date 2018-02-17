@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const initialState = {
-    userInfo:[],
+    userInfo:{id:null},
     memes:[
         // {img:'blah', title: 'blah'}
     ],
-    meme:[]
+    meme:[],
+    favoritedMeme:[]
 }
 
 
@@ -52,6 +53,20 @@ export function getMeme(id) {
     }
 }
 
+const FAVORITE_MEME = 'FAVORITE_MEME';
+
+export function favoriteMeme(favData) {
+    const favMeme = axios.post('/api/favoritememe',favData)
+    .then( res => {
+        return res.data
+        console.log('favorite meme fired')
+    })
+    return {
+        type:FAVORITE_MEME,
+        payload:favMeme
+    }
+}
+
 
 
 
@@ -69,6 +84,9 @@ export default function reducer(state = initialState, action) {
 
         case GET_MEME + '_FULFILLED':
             return Object.assign({}, state, {meme: action.payload})
+
+        case FAVORITE_MEME + '_FULFILLED':
+            return Object.assign({}, state, {favoritedMeme: action.payload})   
 
         default:
         return state;
