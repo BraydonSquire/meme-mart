@@ -5,7 +5,7 @@ const initialState = {
     memes:[
         // {img:'blah', title: 'blah'}
     ],
-    meme:[],
+    meme:{},
     favoritedMeme:[]
 }
 
@@ -44,7 +44,7 @@ const GET_MEME = 'GET_MEME';
 export function getMeme(id) {
     const singleMeme = axios.get(`/api/getonememe/${id}`)
     .then(res => {
-        return res.data
+        return res.data[0]
         console.log('getMeme fired')
     })
     return {

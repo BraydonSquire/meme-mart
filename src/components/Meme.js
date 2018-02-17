@@ -31,25 +31,12 @@ class Meme extends Component {
             userid:this.props.userInfo.id
         }
 
-        var list = meme.map((memebox, i) => {
-            return (
-                // <div className="meme-box" key={i}>
-
-                //     <div className="meme-photo-container">
-                //         <img className="meme-photo" src={memebox.img} />
-                //     </div>
-                // <div className="meme-title">
-                //     <p>{memebox.title}</p>
-                // </div>    
-
-                // </div>
+        var list = 
                 <div className="single-meme-container">
-                    <div className="single-meme-title"><p>{memebox.title}</p></div>
-                    <img className="single-meme-photo" src={memebox.img} />
+                    <div className="single-meme-title"><p>{meme.title}</p></div>
+                    <img className="single-meme-photo" src={meme.img} />
                 </div>
 
-            )
-        })
 
         return (
             <div>
