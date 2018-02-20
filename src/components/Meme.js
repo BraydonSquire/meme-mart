@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 // import axios from 'axios';
 import { connect } from 'react-redux';
-import { getMeme, getUserInfo, favoriteMeme, getFavorites, unfavMeme } from '../ducks/reducer';
+import { getMeme, getUserInfo, favoriteMeme, getFavorites, unfavMeme, deleteMeme } from '../ducks/reducer';
 
 
 class Meme extends Component {
@@ -78,11 +78,13 @@ class Meme extends Component {
                     ( this.state.favorited == false ?
                     <button onClick={ () => this.props.favoriteMeme(favoriteData) && this.setState({favorited:true})} className="favorite-button">Favorite</button> 
                     : 
-                    <button onClick={ () => this.props.unfavMeme(unfavData.favid, unfavData.userid) && this.setState({favorited:false}) && console.log('unfav',meme.id, this.props.userInfo.id) } className="favorite-button">Unfavorite</button>)
+                    <button onClick={ () => this.props.unfavMeme(unfavData.favid, unfavData.userid) && this.setState({favorited:false}) } className="favorite-button">Unfavorite</button>)
                     :
                      null }
+                     
                     
                 </div>
+                {this.props.userInfo.id === 1 ? <button id="delete" className="favorite-button" onClick={ () => this.props.deleteMeme(this.props.meme.id)}>Delete</button> : null}
             </div>
 
         )
@@ -95,8 +97,9 @@ function mapStateToProps(state) {
         userInfo: state.userInfo,
         favoritedMeme: state.favoritedMeme,
         favoriteMemes: state.favoriteMemes,
-        unfavedMeme: state.unfavedMeme
+        unfavedMeme: state.unfavedMeme,
+        deletedMeme: state.deletedMeme
     }
 }
 
-export default connect(mapStateToProps, { getMeme, getUserInfo, favoriteMeme, getFavorites, unfavMeme })(Meme);
+export default connect(mapStateToProps, { getMeme, getUserInfo, favoriteMeme, getFavorites, unfavMeme, deleteMeme })(Meme);

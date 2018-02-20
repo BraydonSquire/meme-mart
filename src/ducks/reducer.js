@@ -8,7 +8,9 @@ const initialState = {
     meme:{},
     favoritedMeme:[],
     favoriteMemes:[],
-    unfavedMeme:[]
+    unfavedMeme:[],
+    addedMeme:{},
+    deletedMeme:{}
 }
 
 
@@ -96,6 +98,32 @@ export function unfavMeme(favid, userid) {
     }
 }
 
+const ADD_MEME = 'ADD_MEME';
+
+export function addMeme(img, title) {
+    const add = axios.post(`/api/addmeme/?img=${img}&title=${title}`)
+    .then( res => {
+        return res.data
+    })
+    return {
+        type: ADD_MEME,
+        payload: add
+    }
+}
+
+const DELETE_MEME = 'DELETE_MEME';
+
+export function deleteMeme(id) {
+    const erase = axios.delete(`/api/deletememe/${id}`)
+    .then( res => {
+        return res.data
+    })
+    return {
+        type: DELETE_MEME,
+        payload: erase
+    }
+}
+
 
 export default function reducer(state = initialState, action) {
 
@@ -119,6 +147,12 @@ export default function reducer(state = initialState, action) {
             
         case UNFAVORITE + '_FULFILLED':
             return Object.assign({}, state, {unfavedMeme: action.payload})    
+
+        case ADD_MEME + '_FULFILLED':
+            return Object.assign({}, state, {addedMeme: action.payload})    
+
+        case DELETE_MEME + '_FULFILLED':
+            return Object.assign({}, state, {deletedMeme: action.payload})    
 
         default:
         return state;

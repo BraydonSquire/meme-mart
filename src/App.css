@@ -173,3 +173,48 @@ bottom: 0;
   justify-content: center;
   
 }
+
+.favorites-title {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  color: whitesmoke;
+  text-decoration: underline;
+}
+
+.addmeme-form {
+  height: 300px;
+  width: 60vw;
+  display: block;
+  margin: auto;
+}
+
+input {
+  width: 60%;
+  height: 10%;
+  display: block;
+  margin:0 auto;
+  margin-top: 40px;
+}
+
+.submit {
+  display: block;
+  margin: auto;
+  background-color: #141518;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    height: 30px;
+    width: 90px;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    margin-top:20px;
+}
+
+#delete {
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+}

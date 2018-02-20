@@ -104,7 +104,11 @@ app.get('/api/getfavorites/:id', controller.getFavorites)
 
 app.post('/api/favoritememe', controller.favoriteMeme)
 
+app.post('/api/addmeme', controller.addMeme)
+
 app.delete('/api/unfavorite', controller.unfavMeme)
+
+app.delete('/api/deletememe/:id', controller.deleteMeme)
 
 
 

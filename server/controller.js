@@ -33,5 +33,19 @@ module.exports = {
         .then( response => {
             res.status(200).send(response)
         }). catch( _ => res.status(500).send('Something went wrong unfavoriteding this meme!') )
+    },
+    addMeme: (req, res, next) => {
+        const db = req.app.get('db')
+        db.add_meme(req.query.img, req.query.title)
+        .then( response => {
+            res.status(200).send(response)
+        }).catch( _ => res.status(500).send('Something went wrong adding this meme!') )
+    },
+    deleteMeme: (req, res, next) => {
+        const db = req.app.get('db')
+        db.delete_meme(req.params.id)
+        .then( response => {
+            res.status(200).send(response)
+        }).catch( _ => res.status(500).send('Something went wrong deleting this meme!') )
     }
 }

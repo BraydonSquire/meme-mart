@@ -1,0 +1,1 @@
+INSERT INTO memes (img, title) VALUES ($1, $2);
