@@ -90,11 +90,7 @@ passport.deserializeUser( (id, done) => {//deserializeUser also takes a callback
     })
 });
 
-// this bit is for  deploying on a drplet
-// const path = require('path')
-// app.get('*', (req, res)=>{
-//   res.sendFile(path.join(__dirname, '../build/index.html'));
-// })
+
 
 app.get('/api/getmemes', controller.getMemes)
 
@@ -109,6 +105,13 @@ app.post('/api/addmeme', controller.addMeme)
 app.delete('/api/unfavorite', controller.unfavMeme)
 
 app.delete('/api/deletememe/:id', controller.deleteMeme)
+
+
+
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 
 
