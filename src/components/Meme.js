@@ -78,7 +78,7 @@ class Meme extends Component {
                     ( this.state.favorited == false ?
                     <button onClick={ () => this.props.favoriteMeme(favoriteData) && this.setState({favorited:true})} className="favorite-button">Favorite</button> 
                     : 
-                    <button onClick={ () => this.props.unfavMeme(unfavData) && this.setState({favorited:false}) && console.log('unfav',meme.id, this.props.userInfo.id) } className="favorite-button">Unfavorite</button>)
+                    <button onClick={ () => this.props.unfavMeme(unfavData.favid, unfavData.userid) && this.setState({favorited:false}) && console.log('unfav',meme.id, this.props.userInfo.id) } className="favorite-button">Unfavorite</button>)
                     :
                      null }
                     

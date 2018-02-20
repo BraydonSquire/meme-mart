@@ -85,8 +85,8 @@ export function getFavorites(id) {
 
 const UNFAVORITE = 'UNFAVORITE';
 
-export function unfavMeme(data) {
-    const unfav = axios.delete(`/api/unfavorite`, data)
+export function unfavMeme(favid, userid) {
+    const unfav = axios.delete(`/api/unfavorite/?favid=${favid}&userid=${userid}` )
     .then( res => {
         return res.data && 'endpoint hit successfully'
     })

@@ -29,7 +29,7 @@ module.exports = {
     },
     unfavMeme: (req, res, next) => {
         const db = req.app.get('db')
-        db.unfavorite_meme(req.body.favid, req.body.userid)
+        db.unfavorite_meme(req.query.favid, req.query.userid)
         .then( response => {
             res.status(200).send(response)
         }). catch( _ => res.status(500).send('Something went wrong unfavoriteding this meme!') )
