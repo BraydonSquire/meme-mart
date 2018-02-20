@@ -6,7 +6,9 @@ const initialState = {
         // {img:'blah', title: 'blah'}
     ],
     meme:{},
-    favoritedMeme:[]
+    favoritedMeme:[],
+    favoriteMemes:[],
+    unfavedMeme:[]
 }
 
 
@@ -68,7 +70,31 @@ export function favoriteMeme(favData) {
 }
 
 
+const GET_FAVORITES = 'GET_FAVORITES';
 
+export function getFavorites(id) {
+    const usersFavs = axios.get(`/api/getfavorites/${id}`)
+    .then( res => {
+        return res.data
+    })
+    return {
+        type:GET_FAVORITES,
+        payload:usersFavs
+    }
+}
+
+const UNFAVORITE = 'UNFAVORITE';
+
+export function unfavMeme(data) {
+    const unfav = axios.delete(`/api/unfavorite`, data)
+    .then( res => {
+        return res.data && 'endpoint hit successfully'
+    })
+    return {
+        type:UNFAVORITE,
+        payload: unfav
+    }
+}
 
 
 export default function reducer(state = initialState, action) {
@@ -86,7 +112,13 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {meme: action.payload})
 
         case FAVORITE_MEME + '_FULFILLED':
-            return Object.assign({}, state, {favoritedMeme: action.payload})   
+            return Object.assign({}, state, {favoritedMeme: action.payload})
+            
+        case GET_FAVORITES + '_FULFILLED':
+            return Object.assign({}, state, {favoriteMemes: action.payload}) 
+            
+        case UNFAVORITE + '_FULFILLED':
+            return Object.assign({}, state, {unfavedMeme: action.payload})    
 
         default:
         return state;

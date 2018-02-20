@@ -1,0 +1,1 @@
+SELECT * from favorites WHERE userid = $1;

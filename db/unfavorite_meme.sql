@@ -1,0 +1,1 @@
+DELETE FROM favorites WHERE favid = $1 AND userid = $2;

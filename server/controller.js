@@ -19,5 +19,19 @@ module.exports = {
         .then(response => {
             res.status(200).send(response)
         }).catch( () => res.status(500).send('Something went wrong favoriting this meme!') )
+    },
+    getFavorites: (req, res, next) => {
+        const db = req.app.get('db')
+        db.get_favorites(req.params.id)
+        .then(response => {
+            res.status(200).send(response)
+        })
+    },
+    unfavMeme: (req, res, next) => {
+        const db = req.app.get('db')
+        db.unfavorite_meme(req.body.favid, req.body.userid)
+        .then( response => {
+            res.status(200).send(response)
+        }). catch( _ => res.status(500).send('Something went wrong unfavoriteding this meme!') )
     }
 }

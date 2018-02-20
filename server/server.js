@@ -100,7 +100,11 @@ app.get('/api/getmemes', controller.getMemes)
 
 app.get('/api/getonememe/:id', controller.getOneMeme)
 
+app.get('/api/getfavorites/:id', controller.getFavorites)
+
 app.post('/api/favoritememe', controller.favoriteMeme)
+
+app.delete('/api/unfavorite', controller.unfavMeme)
 
 
 

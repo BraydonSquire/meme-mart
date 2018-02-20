@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getMemeList} from '../ducks/reducer';
+import {getMemeList, getFavorites, getUserInfo} from '../ducks/reducer';
 import {Link} from 'react-router-dom'
 
 
@@ -15,6 +15,7 @@ class Memelist extends Component {
    
 componentDidMount(){
     this.props.getMemeList()
+    // this.props.getFavorites(this.props.userInfo.id)
 }
 
 
@@ -49,9 +50,11 @@ componentDidMount(){
 
 function mapStateToProps(state) {
     return {
-        memes:state.memes
+        memes:state.memes,
+        favoriteMemes: state.favoriteMemes,
+        userInfo: state.userInfo
     }
 }
 
-export default connect(mapStateToProps, {getMemeList})(Memelist);
+export default connect(mapStateToProps, {getMemeList, getFavorites, getUserInfo})(Memelist);
 
